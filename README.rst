@@ -44,12 +44,14 @@ Requirements
 
 Running
 =======
-The program can be run from the command prompt/ shell with 
+The program can be run from the command prompt or shell with 
+
     python main.py <filename>
 
 where <filename> is the name of the input file containing items to search.
 
 For example
+
     python main.py search.txt
 
 Input file format
