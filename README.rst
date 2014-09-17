@@ -6,7 +6,7 @@ Overview
 ========
 
 Price Search is a program to automate the process of identifying items at
-a reduced price at the supermarket. It uses Scrapy to crawl the 
+a reduced price at the supermarket. It uses `Scrapy`_ to crawl the 
 `mySupermarket`_ "Savvy Buys" pages, then does a bulk search for items that 
 match the list provided.
 
