@@ -3,6 +3,7 @@ This module contains a single class that manages the scraping of data
 from one or more supermarkets on mysupermarket.co.uk
 """
 from datetime import datetime
+from os import remove
 from os.path import isfile, getmtime
 from time import time
 
@@ -60,7 +61,11 @@ class CachingScraper():
         Keyword arguments:
         supermarket -- the supermarket whose crawler should be set up
         """
-
+        
+        cachefile = supermarket_filename(supermarket)
+        if isfile(cachefile):
+            remove(cachefile)
+            
         settings = get_project_settings()
 
         url = supermarket_url(supermarket)
