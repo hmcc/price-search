@@ -12,5 +12,5 @@ NEWSPIDER_MODULE = 'scraper.spiders'
 #USER_AGENT = 'pricesearch (+http://www.yourdomain.com)'
 
 # Feed export - JSON lines to file
-#FEED_URI is set in CachingScraper
+FEED_URI = 'home/heather/scrape.json'
 FEED_FORMAT = 'jsonlines'

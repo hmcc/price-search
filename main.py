@@ -1,16 +1,12 @@
 """
 This module contains the main entry point for the application.
 """
-import fileinput
 from optparse import OptionParser
 
 from scrapy import log
 
-from app_config import supermarket_filename, supermarket_names
-from scraper.scraper import CachingScraper
-from search.search import search_file
-
-
+from app_config import supermarket_names
+from scraper.crawler_manager import CrawlerManager
 def parse_args():
     """Parse command line arguments."""
     parser = OptionParser()
@@ -24,11 +20,6 @@ def parse_args():
                       dest='supermarket',
                       default="asda",
                       help="supermarket to search")
-    parser.add_option("-r", "--refresh",
-                      action='store_true',
-                      dest='force_refresh',
-                      default=False,
-                      help="ignore cache and always fetch fresh data")
 
     return parser.parse_args()
 
@@ -44,17 +35,9 @@ def run():
     else:
         supermarkets = [options.supermarket]
 
-    scraper = CachingScraper(supermarkets, options.force_refresh)
+    scraper = CrawlerManager(supermarkets)
     log.start()
     scraper.get_data()
-
-    search_phrases = []
-    for line in fileinput.input(args):
-        search_phrases.append(line.split())
-
-    for supermarket in supermarkets:
-        log.msg("*** Savvy buys in %s ***" % supermarket.upper())
-        search_file(search_phrases, supermarket_filename(supermarket))
 
 
 if __name__ == "__main__":

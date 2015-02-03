@@ -6,7 +6,7 @@ For more information, see http://doc.scrapy.org/en/latest/topics/items.html
 import scrapy
 
 
-class MySupermarketItem(scrapy.Item):
+class SupermarketItem(scrapy.Item):
     """
     This class represents a single item for sale on mysupermarket.co.uk
     Title and price should be self-explanatory; the unit price is the price
@@ -16,6 +16,5 @@ class MySupermarketItem(scrapy.Item):
     "(80)" is the subtitle.
     """
     title = scrapy.Field()
-    subtitle = scrapy.Field()
     price = scrapy.Field()
     unit_price = scrapy.Field()
