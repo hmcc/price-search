@@ -34,12 +34,12 @@ class MySupermarketSpider(Spider):
         """Extract the title from a list item"""
 
         # Titles have a trailing space
-        return cell.css("span.ProductName::text").extract()[0][:-1]
+        return cell.css("span.Prefix::text").extract()[0][:-1]
 
     def get_subtitle(self, cell):
         """Extract the subtitle from a list item"""
 
-        subtitle_elements = cell.css("span.NameSuffix::text").extract()
+        subtitle_elements = cell.css("span.Suffix::text").extract()
         # Not all items have a subtitle
         if subtitle_elements:
             return subtitle_elements[0]
@@ -48,7 +48,7 @@ class MySupermarketSpider(Spider):
         """Extract the price from a list item"""
 
         price_container = cell.css("span.Price")
-        offer_price_element = price_container.css(".Offer::text").extract()
+        offer_price_element = price_container.css(".OfferWrp::text").extract()
         if offer_price_element:
             # Offer elements can be either [" any", " 2 for 50p"] or [" 50p"]
             # Take the last in the list then strip leading space
@@ -77,7 +77,7 @@ class MySupermarketSpider(Spider):
         Keyword arguments:
         response -- the HTTP response
         """
-        for cell in response.css("li.MspProductListCell"):
+        for cell in response.css("li#NgMspProductCell"):
             item = MySupermarketItem()
             item['title'] = self.get_title(cell)
             item['subtitle'] = self.get_subtitle(cell)
