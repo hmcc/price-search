@@ -2,6 +2,12 @@
 Price Search
 ============
 
+**This project is no longer working!**
+
+The reason is that `mySupermarket`_ have updated their website to require cookies for the "Savvy Buys" pages.
+
+Since I recently `started a new job`_ it may be a while before this is fixed :(
+
 Overview
 ========
 
@@ -64,5 +70,6 @@ found. There is a sample input file provided, search_example.txt.
 .. _Python: http://www.python.org/
 .. _Scrapy: http://scrapy.org/
 .. _here: http://doc.scrapy.org/en/latest/intro/install.html#platform-specific-installation-notes
+.. _started a new job: http://yossarianlives.com/
 
 
