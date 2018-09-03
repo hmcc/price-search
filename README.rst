@@ -44,7 +44,7 @@ time-consuming and tedious, so I decided to automate it.
 
 Requirements
 ============
-* `Python`_ version 2.7
+* `Python`_ version 3.6 
 * The `Scrapy`_ library
 * All `Scrapy`_'s dependencies. These are OS-specific and are listed `here`_. 
 

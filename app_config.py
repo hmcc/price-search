@@ -2,11 +2,11 @@
 This module contains convenience methods for working with the application
 config.
 """
-from ConfigParser import ConfigParser
+import configparser
 from os.path import join, dirname, realpath
 
 
-cfg = ConfigParser()
+cfg = configparser.ConfigParser()
 cfg.read("app.cfg")
 
 supermarket_urls = dict(cfg.items('urls'))

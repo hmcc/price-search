@@ -2,14 +2,14 @@
 This module contains the main entry point for the application.
 """
 import fileinput
+import logging
 from optparse import OptionParser
-
-from scrapy import log
 
 from app_config import supermarket_filename, supermarket_names
 from scraper.scraper import CachingScraper
 from search.search import search_file
 
+logger = logging.getLogger('price_search')
 
 def parse_args():
     """Parse command line arguments."""
@@ -45,7 +45,6 @@ def run():
         supermarkets = [options.supermarket]
 
     scraper = CachingScraper(supermarkets, options.force_refresh)
-    log.start()
     scraper.get_data()
 
     search_phrases = []
@@ -53,7 +52,7 @@ def run():
         search_phrases.append(line.split())
 
     for supermarket in supermarkets:
-        log.msg("*** Savvy buys in %s ***" % supermarket.upper())
+        logger.info("*** Savvy buys in %s ***" % supermarket.upper())
         search_file(search_phrases, supermarket_filename(supermarket))
 
 

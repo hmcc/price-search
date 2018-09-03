@@ -3,8 +3,10 @@ This module contains functions for searching the data scraped from
 mysupermarket.co.uk using pricesearch.scraper.
 """
 from json import loads
+import logging
 
-from scrapy import log
+
+logger = logging.getLogger('price_search')
 
 
 def search_file(search_phrases, filename, match_fn=lambda item: output_match(item)):
@@ -31,11 +33,10 @@ def search_file(search_phrases, filename, match_fn=lambda item: output_match(ite
 
 
 def output_match(item):
-    """Print the item using Scrapy's log.msg.
-    Requires log.start, or nothing will be output.
+    """Print the item.
     
     Keyword arguments:
     item -- the item to print
     """
-    log.msg("%s %s %s %s" %
-            (item['title'], item['subtitle'], item['price'], item['unit_price']))
+    logger.info("%s %s %s %s" %
+                (item['title'], item['subtitle'], item['price'], item['unit_price']))
